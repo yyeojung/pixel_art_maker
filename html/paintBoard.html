@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Maker</title>
+    <!-- css -->
+    <link rel="stylesheet" href="../assets/css/common.css">
+</head>
+<body>
+    <!-- wrap -->
+    <div class="wrap">
+        <div class="board">
+            <div class="container">
+            </div>
+            <div class="setting">
+                <i class="maker_icon"></i>
+                <div class="flex">
+                    <div class="left">
+                        <div class="grid">
+                            <label for="gridNum">Grid Width</label>
+                            <input type="number" id="gridNum" value="30" min="1" max="60"/>
+                        </div>
+                        <div class="btn">
+                            <div class="btn_wrap">
+                                <button class="reset"></button>
+                                <span>Reset</span>
+                            </div>
+                            <div class="btn_wrap">
+                                <button></button>
+                                <span>Erase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <input type="color" class="color_picker">
+                        <div class="colors"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- wrap -->
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>

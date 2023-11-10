@@ -1,0 +1,50 @@
+@charset "utf-8";   
+@font-face {
+    font-family: 'Aldrich';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/Aldrich-Regular.ttf) format('woff2'); 
+}
+
+/* reset */
+html,body {width:100%; height:100%;}
+body * {box-sizing: border-box;}
+html,body,h1,h2,h3,h4,h5,h6,div,p,blockquote,pre,code,address,ul,ol,li,menu,nav,section,article,aside,dl,dt,dd,table,thead,tbody,tfoot,label,caption,th,td,form,fieldset,legend,hr,input,button,textarea,object,figure,figcaption {margin:0;padding:0;}
+body{-webkit-text-size-adjust:none; word-wrap:break-word; word-break:break-all;}
+body.fixed{overflow-y: hidden;}
+body,input,select,textarea,button,pre {border:none; font-size:14px; font-family:'Aldrich'; color:#fff; }
+ul,ol,li{list-style-type:none;}
+table{ border-spacing:0; }
+img,fieldset{border:0;}
+address,cite,code{font-style:normal; font-weight:normal;}
+em, i{ font-style:normal; }
+label,img,input,select,textarea,button{vertical-align:middle;}
+.hide,legend{overflow: hidden; display:block; position:absolute; border: 0; width: 1px; height: 1px; clip: rect(1px, 1px, 1px, 1px);}
+hr{display:none;}
+main,header,section,nav,footer,aside,article,figure{display:block;}
+a{color:inherit;text-decoration:none;}
+button { cursor: pointer; background-color: transparent; font-weight:400; }
+pre{ white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; }
+
+/* input */
+input {width:100%; font-size:14px; color:#000; border:none; background-color:#fff; transition:all .15s; box-sizing: border-box; vertical-align:middle; }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0;}
+input[type=number] { -moz-appearance:textfield; appearance: textfield; padding:10px;}
+
+.wrap {width:100%; min-height:100vh; background:url(../images/background.png)center center/ cover no-repeat; position:relative;}
+.board {width:520px; padding:20px; border-radius:10px; box-shadow:6px 6px 4px 0 rgba(0, 0, 0, 0.4), inset 4px 6px 4px 2px rgba(255, 255, 255, 0.14); background:#32243c; position:absolute; top: 50%; left:50%; transform:translate(-50%, -50%);}
+.container {width: 480px; height: 480px; background:#fff;}
+.container table {width:100%; height:100%; border-collapse:collapse; border-spacing:0;}
+.container table td {border:1px solid #ccc;}
+.setting .maker_icon {width:140px; height:32px; display: block; background:url(../images/pixelArt.png)center center/ 100% no-repeat; margin: 20px auto; }
+.setting .flex {display:flex; justify-content:space-between;}
+.setting .left label {font-size:20px;}
+.setting .left input {width:80px; height: 40px; border-radius:5px; margin-left:10px;}
+.setting .left .btn {margin:40px 0 0 10px; display: flex; justify-content: space-between;}
+.setting .left .btn_wrap:last-child {margin-top: 60px;}
+.setting .left .btn button {width:70px; height:70px; background:#ccc; border-radius:50%; box-shadow: 2px 3px 2px 2px rgba(36, 34, 34, 0.53), inset -2px -4px 2px 0 rgba(0, 0, 0, 0.31), inset 3px 3px 1px 0 rgba(255, 255, 255, 0.53);;}
+.setting .left span {display:block; font-size:16px; text-align:center; margin-top:10px;}
+
+.setting .right .color_picker {width:240px; height:40px;}
