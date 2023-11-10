@@ -32,8 +32,12 @@ input {width:100%; font-size:14px; color:#000; border:none; background-color:#ff
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0;}
 input[type=number] { -moz-appearance:textfield; appearance: textfield; padding:10px;}
-
+input:focus {outline: none;}
 /* 그림판 페이지 */
+:root {
+    --shadow: 2px 3px 2px 2px rgba(36, 34, 34, 0.53), inset -2px -4px 2px 0 rgba(0, 0, 0, 0.31), inset 3px 3px 1px 0 rgba(255, 255, 255, 0.53);
+    --upShadow: 2px 2px 3px 0 rgba(255,255,255,0.2),inset 2px 2px 1px 0 rgba(0, 0, 0, 0.4)
+}
 body.eraser {cursor:url(../images/eraser.png)5 0, auto}
 body.painting {cursor:url(../images/painting.png)0 10, auto}
 .wrap {width:100%; min-height:100vh; background:url(../images/background.png)center center/ cover no-repeat; position:relative;}
@@ -44,12 +48,12 @@ body.painting {cursor:url(../images/painting.png)0 10, auto}
 .setting .maker_icon {width:140px; height:32px; display: block; background:url(../images/pixelArt.png)center center/ 100% no-repeat; margin: 20px auto; }
 .setting .flex {display:flex; justify-content:space-between;}
 .setting .left label {font-size:20px;}
-.setting .left input {width:80px; height: 40px; border-radius:5px; margin-left:10px;}
+.setting .left input {width:80px; height: 40px; border-radius:5px; margin-left:10px; box-shadow:var(--upShadow)}
 .setting .left .btn {margin:40px 0 0 10px; display: flex; justify-content: space-between;}
 .setting .left .btn_wrap:last-child {margin-top: 60px;}
-.setting .left .btn button {width:70px; height:70px; background:#ccc; border-radius:50%; box-shadow: 2px 3px 2px 2px rgba(36, 34, 34, 0.53), inset -2px -4px 2px 0 rgba(0, 0, 0, 0.31), inset 3px 3px 1px 0 rgba(255, 255, 255, 0.53);}
+.setting .left .btn button {width:70px; height:70px; background:#ccc; border-radius:50%; box-shadow: var(--shadow)}
 .setting .left span {display:block; font-size:16px; text-align:center; margin-top:10px;}
 
-.setting .right .color_picker {width:240px; height:40px;}
+.setting .right .color_picker {width:240px; height:40px; border-radius:5px; box-shadow:var(--shadow);}
 .setting .right .colors {display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; justify-items: center; margin-top:30px;}
-.setting .right .color_chip {width:35px; height:35px; border-radius:50%; border-radius:50%; box-shadow: 2px 3px 2px 2px rgba(36, 34, 34, 0.53), inset -2px -4px 2px 0 rgba(0, 0, 0, 0.31), inset 3px 3px 1px 0 rgba(255, 255, 255, 0.53);}
+.setting .right .color_chip {width:35px; height:35px; border-radius:50%; border-radius:50%; box-shadow:var(--shadow)}
