@@ -1,10 +1,13 @@
+const body = document.body;
 const container = document.querySelector(".container");
 const gridSize = document.getElementById("gridNum");
 let size = gridSize.value;
 const color = document.querySelector(".color_picker");
 const resetBtn = document.querySelector(".reset");
+const eraserBtn = document.querySelector(".eraser");
 
 let isDrawing = false;
+let isErasing = false;
 
 container.addEventListener("mousedown", () => {
     isDrawing = true;
@@ -33,6 +36,12 @@ resetBtn.addEventListener("click", () => {
 function resetContainer() {
     container.innerHTML = "";
 };
+
+//지우개
+eraserBtn.addEventListener("click", () => {
+    isErasing = !isErasing
+    body.classList.replace('painting', 'eraser');
+})
 
 //input size event
 gridSize.addEventListener("change", (e) => {
@@ -66,14 +75,22 @@ function makeContainer(s) {
     container.appendChild(table); //table 생성 후 pixel tr, td 추가
 
     const pixels = document.querySelectorAll('.container table td');
+
+    //지우개, 그리기 이벤트
     pixels.forEach(pixel => {
         pixel.addEventListener("mouseover", () => {
-            if (isDrawing) { //isDrawing이 자꾸 false로 나와서 이유 찾음 ㅜ
+            if (isDrawing && isErasing) { //isDrawing이 자꾸 false로 나와서 이유 찾음 ㅜ
+                pixel.style.backgroundColor = '#fff';
+            } else if (isDrawing) { 
                 pixel.style.backgroundColor = color.value;
             }
         });
         pixel.addEventListener("mousedown", () => {
-            pixel.style.backgroundColor = color.value;
+            if (isErasing) {
+                pixel.style.backgroundColor = '#fff';   
+            } else {
+                pixel.style.backgroundColor = color.value;
+            }
         })
     })
 }
@@ -89,18 +106,18 @@ async function getColorData() {
 getColorData()
     .then((items) => {
         const colors = document.querySelector(".colors");
-        const colorsBox = document.createElement('ul')
-        colors.appendChild(colorsBox);
-        colorsBox.innerHTML = items
+        colors.innerHTML = items
             .map((item) => {
                 return `<li class="color_chip" style="background-color:${item.color}" data-color="${item.color}"></li>`
             })
             .join(""); //join을 사용하지 않으면 배열에 ,가 들어감. ["<li>red</li>", "<li>green</li>"]
-        colorsBox.addEventListener("click", (e) => {
+        colors.addEventListener("click", (e) => {
+            isErasing = false; //그리기 이벤트에서 했는데 자꾸 true로 나와서 클릭에 추가!
+            body.classList.replace('eraser', 'painting');
             const targetColor = e.target.dataset.color;
             color.value = targetColor;
         });
     })
     .catch(console.log)
 
-
+//user-select:none; 마우스가 금지표시로 종종 나와서 td에 css 추가!
