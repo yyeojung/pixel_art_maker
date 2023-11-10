@@ -74,8 +74,6 @@ function makeContainer(s) {
         });
         pixel.addEventListener("mousedown", () => {
             pixel.style.backgroundColor = color.value;
-            console.log('down')
-            console.log('isDrawing value:', isDrawing);
         })
     })
 }
@@ -83,7 +81,7 @@ makeContainer(size);//그림 그리깅
 
 //color data 가져오기
 async function getColorData() {
-    const response = await fetch("data/colors.json");
+    const response = await fetch("../assets/data/colors.json"); //경로때문에 헤맴 ㅜ
     const json = await response.json();
     return json.colors;
 }
@@ -91,7 +89,8 @@ async function getColorData() {
 getColorData()
     .then((items) => {
         const colors = document.querySelector(".colors");
-        const colorsBox = colors.createElement('ul')
+        const colorsBox = document.createElement('ul')
+        colors.appendChild(colorsBox);
         colorsBox.innerHTML = items
             .map((item) => {
                 return `<li class="color_chip" style="background-color:${item.color}" data-color="${item.color}"></li>`
