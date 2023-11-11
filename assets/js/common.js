@@ -39,16 +39,22 @@ function resetContainer() {
 
 //지우개
 eraserBtn.addEventListener("click", () => {
-    isErasing = !isErasing
+    isErasing = true;
     body.classList.replace('painting', 'eraser');
+})
+
+//color picker 누르면 지우개 false
+color.addEventListener("click", () => {
+    isErasing = false;
+    body.classList.replace('eraser', 'painting')
 })
 
 //input size event
 gridSize.addEventListener("change", (e) => {
     if (e.target.value < 1 || e.target.value > 60) { //1보다 작거나 60보다 크면 경고!
-        gridSize.value = 30; //기본값
+        gridSize.value = 20; //기본값
         alert("1 ~ 60까지 입력 가능합니다.");
-        setPixelSize(30);
+        setPixelSize(20);
     } else {
         size = e.target.value;
         setPixelSize(size);
@@ -65,12 +71,13 @@ function makeContainer(s) {
     let tableRows = ''; //tableRows에 tr, td 추가
     for (let h = 0; h < s; h++) {
         tableRows += '<tr>';
-        for (let w = 0; w <= s; w++) {
+        for (let w = 0; w < s; w++) {
             tableRows += `<td class="pixel" style="width: ${100 / size}%; height: ${100 / size}%"></td>`
         }
         tableRows += '</tr>'
     }
     const table = document.createElement('table');
+    table.className = 'pixelTable'
     table.innerHTML = tableRows;
     container.appendChild(table); //table 생성 후 pixel tr, td 추가
 
