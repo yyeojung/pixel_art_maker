@@ -10,7 +10,4 @@
 - 지우개
 
 
-참고
-https://codepen.io/pksjw/pen/eMGRKw
 
-https://hmyo2853.github.io/pixel-art-maker/
